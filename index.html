@@ -3,11 +3,34 @@
   <head>
     <meta charset='utf-8'>
     <title>Local Weather App</title>
-    <link rel="stylesheet" type="text/css" href="normalize.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="css/weather-icons.min.css">
+	<link rel="stylesheet" type="text/css" href="css/weather-icons-wind.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
-  <body onload="start()">
-    <h1>Local Weather App</h1>
-  <script src="main.js"></script>
+  <body onload="start()" class="container">
+    <h1 class="city">Jaipur</h1>
+    <div class = "text-center weather-icon">
+    	<i class="wi wi-thunderstorm"></i>
+    </div>
+    <h2 class = "text-center temperature" id="temperatureid">1000&deg;C</h2>
+    <hr>
+    <div class="row inline-elements">
+    	<div class = "col-md-4 text-center humidity">
+    	<i class="wi wi-humidity"></i>
+    	<p id = "humidityid">430%</p>
+    	</div>
+    	<div class = "col-md-4 text-center pressure">
+    	<i class="wi wi-barometer"></i>
+    	<p id ="pressureid">9801mbar</p>
+    	</div>
+    	<div class = "col-md-4 text-center windspeed">
+    		<i class="wi wi-strong-wind"></i>
+    		<p id="windspeedid">200km</p>
+    	</div>
+    </div>
+  	<script src="js/main.js"></script>
   </body>
 </html>

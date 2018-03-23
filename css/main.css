@@ -1,0 +1,52 @@
+body{
+	background-size: cover;
+	background-image: 
+}
+
+.city{
+	color:red;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.weather-icon{
+	width:20vw;
+	height:20vh;
+	margin:0 auto;
+}
+
+.weather-icon>i{
+	font-size:150px;
+}
+
+.temperature{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 40px;
+}
+
+.humidity{
+	height:10vh;
+}
+
+.pressure{
+	height:10vh;
+}
+
+.windspeed{
+	height:10vh;
+}
+
+.humidity>i{
+	font-size:36px;
+	color:purple;
+}
+
+.pressure>i{
+	font-size:36px;
+}
+
+.windspeed>i{
+	font-size:36px
+}

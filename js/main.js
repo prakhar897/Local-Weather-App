@@ -14,7 +14,7 @@ function start()
         	ourRequest.onload = function()
         	{
 				var data = JSON.parse(ourRequest.responseText);
-				//console.log(data);
+				console.log(data);
                 icons(data);
                 getlocation();
 				renderlog(data);
@@ -35,9 +35,11 @@ function renderlog(data)
     var humidity = parseInt(data.main.humidity)+"%";
     var windspeed = parseInt(data.wind.speed)+" m/s";
     var pressure = parseInt(data.main.pressure)+" mBar";
-	//console.log("The temperature in hum,wis,pre is "+ humidity+ " "+windspeed+" "+pressure);
+    var description = data.weather[0].description;
+	console.log("The temperature in hum,wis,pre is "+ description);
     document.getElementById("humidityid").innerHTML=humidity;
     document.getElementById("windspeedid").innerHTML=windspeed;
+    document.getElementById("descriptionid").innerHTML=description;
     document.getElementById("pressureid").innerHTML=pressure;
     document.getElementById("temperatureid").innerHTML=cel+"&deg;C";
     document.getElementById("cityid").innerHTML=name;

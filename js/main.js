@@ -1,5 +1,7 @@
 var url;
-
+var name;
+var iconD;
+var today;
 function start()
 {
 	if (navigator.geolocation) 
@@ -12,7 +14,9 @@ function start()
         	ourRequest.onload = function()
         	{
 				var data = JSON.parse(ourRequest.responseText);
-				console.log(data);
+				//console.log(data);
+                icons(data);
+                getlocation();
 				renderlog(data);
 			}
 			ourRequest.send();
@@ -36,6 +40,45 @@ function renderlog(data)
     document.getElementById("windspeedid").innerHTML=windspeed;
     document.getElementById("pressureid").innerHTML=pressure;
     document.getElementById("temperatureid").innerHTML=cel+"&deg;C";
-	
+    document.getElementById("cityid").innerHTML=name;
+	document.getElementById("weather-iconid").innerHTML="<i class='"+iconD+"'></i>";
 }
 
+function getlocation()
+{
+    var locationRequest = new XMLHttpRequest();
+    locationRequest.open("GET", 'https://ipinfo.io/json', true);     
+    locationRequest.onreadystatechange = function()
+    {
+        if(locationRequest.readyState === 4 && locationRequest.status === 200)
+        {  // ready state 'complete.'
+            var locationObj = JSON.parse(locationRequest.responseText);
+            console.log(locationObj);
+            // parse JSON response.
+            name = locationObj.city+","+locationObj.region+","+locationObj.country;
+            console.log(name);
+        }
+    }
+    locationRequest.send();
+}
+
+function icons(data)
+{
+    var dorn = "";
+    var prefix = "wi wi-";
+    today = new Date();
+    var hour = today.getHours();
+    if (hour > 6 && hour < 20) 
+    {
+        //Day time
+        dorn = "day-";
+    } 
+    else 
+    {
+        //Night time
+        dorn ="night-";
+    }
+    var code = data.weather[0].id;
+    iconD = prefix + "owm-" +dorn+ code;
+    console.log(iconD);
+}

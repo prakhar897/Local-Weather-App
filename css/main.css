@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
+
 body{
 	background: #D3CCE3;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to top, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
@@ -7,6 +10,7 @@ body{
 
 .city{
 	color:red;
+	font-family: 'Roboto Slab', serif;
 	text-align: center;
 	margin-top: 80px;
 	margin-bottom: 50px;
@@ -25,6 +29,7 @@ body{
 .description{
 	font-style: bold;
 	font-size: 30px;
+	font-family: 'Ubuntu Condensed', sans-serif;
 }
 
 .temperature{
@@ -35,19 +40,21 @@ body{
 
 .humidity{
 	height:10vh;
+	font-family: 'Ubuntu Condensed', sans-serif;
 }
 
 .pressure{
 	height:10vh;
+	font-family: 'Ubuntu Condensed', sans-serif;
 }
 
 .windspeed{
 	height:10vh;
+	font-family: 'Ubuntu Condensed', sans-serif;
 }
 
 .humidity>i{
 	font-size:36px;
-	color:purple;
 }
 
 .pressure>i{
@@ -61,4 +68,5 @@ body{
 .footer{
 	font-size: .75rem;
 	margin-top: 20vh;
+	font-family: 'Ubuntu Condensed', sans-serif;
 }

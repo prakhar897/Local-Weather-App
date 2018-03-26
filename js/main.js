@@ -9,15 +9,18 @@ function start()
         navigator.geolocation.getCurrentPosition(function(position)
         {
         	var ourRequest = new XMLHttpRequest();
-        	url ="http://api.openweathermap.org/data/2.5/weather?lat="+parseInt(position.coords.latitude)+"&lon="+parseInt(position.coords.longitude)+"&id=524901&APPID=33bf83187c4b7768f5ece4c332470a70";
+        	url ="https://api.openweathermap.org/data/2.5/weather?lat="+parseInt(position.coords.latitude)+"&lon="+parseInt(position.coords.longitude)+"&id=524901&APPID=33bf83187c4b7768f5ece4c332470a70";
         	ourRequest.open('GET',url);
-        	ourRequest.onload = function()
-        	{
+        	ourRequest.onreadystatechange = function()
+    		{
+        		if(ourRequest.readyState === 4 && ourRequest.status === 200)
+        		{ 
 				var data = JSON.parse(ourRequest.responseText);
-				console.log(data);
+				//console.log(data);
                 icons(data);
                 getlocation();
 				renderlog(data);
+				}
 			}
 			ourRequest.send();
         });
@@ -36,13 +39,12 @@ function renderlog(data)
     var windspeed = parseInt(data.wind.speed)+" m/s";
     var pressure = parseInt(data.main.pressure)+" mBar";
     var description = data.weather[0].description;
-	console.log("The temperature in hum,wis,pre is "+ description);
+	//console.log("The temperature in hum,wis,pre is "+ description);
     document.getElementById("humidityid").innerHTML=humidity;
     document.getElementById("windspeedid").innerHTML=windspeed;
     document.getElementById("descriptionid").innerHTML=description;
     document.getElementById("pressureid").innerHTML=pressure;
     document.getElementById("temperatureid").innerHTML=cel+"&deg;C";
-    document.getElementById("cityid").innerHTML=name;
 	document.getElementById("weather-iconid").innerHTML="<i class='"+iconD+"'></i>";
 }
 
@@ -55,10 +57,10 @@ function getlocation()
         if(locationRequest.readyState === 4 && locationRequest.status === 200)
         {  // ready state 'complete.'
             var locationObj = JSON.parse(locationRequest.responseText);
-            console.log(locationObj);
+            //console.log(locationObj);
             // parse JSON response.
             name = locationObj.city+","+locationObj.region+","+locationObj.country;
-            console.log(name);
+            document.getElementById("cityid").innerHTML=name;
         }
     }
     locationRequest.send();
@@ -82,5 +84,5 @@ function icons(data)
     }
     var code = data.weather[0].id;
     iconD = prefix + "owm-" +dorn+ code;
-    console.log(iconD);
+    //console.log(iconD);
 }
